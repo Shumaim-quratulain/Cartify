@@ -1,11 +1,11 @@
 package org.ecommerce.sbecom.service;
 
 import org.ecommerce.sbecom.exceptions.APIException;
-import org.ecommerce.sbecom.exceptions.ResourcesNotFoundException;
+import org.ecommerce.sbecom.exceptions.ResourceNotFoundException;
 import org.ecommerce.sbecom.model.Category;
 import org.ecommerce.sbecom.payload.CategoryDTO;
 import org.ecommerce.sbecom.payload.CategoryResponse;
-import org.ecommerce.sbecom.repository.CategoryRepository;
+import org.ecommerce.sbecom.repositories.CategoryRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -65,7 +65,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDTO deleteCategory(Long categoryId) {
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourcesNotFoundException("Category", "id", categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
 
 
         categoryRepository.delete(category);
@@ -75,7 +75,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDTO updateCategory(Long categoryId, CategoryDTO categoryDTO) {
         Category existingCategory = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourcesNotFoundException("Category", "id", categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
 
         // Apply the incoming changes
         existingCategory.setCategoryName(categoryDTO.getCategoryName());
