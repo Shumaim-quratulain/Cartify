@@ -1,0 +1,1068 @@
+{
+  "info": {
+    "_postman_id": "3b7010e1-bd7e-4163-ac0c-9bdbc3b73f40",
+    "name": "Spring Boot commerce",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55116499",
+    "_collection_link": "https://go.postman.co/collection/55116499-3b7010e1-bd7e-4163-ac0c-9bdbc3b73f40?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "Get all Category",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Hello Spring Boot"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/Categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "Categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create new Category",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"categoryName\": \"Travelss\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/Categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "Categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update category",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"categoryName\": \"Travel\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/Categories/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "Categories",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Catogery",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const statusCode = pm.response.code;",
+                  "const responseBody = pm.response.text();",
+                  "const isSuccess = statusCode >= 200 && statusCode < 300;",
+                  "",
+                  "const template = `",
+                  "<html>",
+                  "<head>",
+                  "  <style>",
+                  "    body {",
+                  "      font-family: Arial, sans-serif;",
+                  "      display: flex;",
+                  "      justify-content: center;",
+                  "      align-items: center;",
+                  "      height: 100vh;",
+                  "      margin: 0;",
+                  "      background: #f5f5f5;",
+                  "    }",
+                  "    .card {",
+                  "      background: white;",
+                  "      border-radius: 8px;",
+                  "      padding: 32px 48px;",
+                  "      box-shadow: 0 2px 8px rgba(0,0,0,0.12);",
+                  "      text-align: center;",
+                  "      min-width: 300px;",
+                  "    }",
+                  "    .status-badge {",
+                  "      display: inline-block;",
+                  "      padding: 8px 20px;",
+                  "      border-radius: 20px;",
+                  "      font-size: 22px;",
+                  "      font-weight: bold;",
+                  "      color: white;",
+                  "      background: ${isSuccess ? '#27ae60' : '#e74c3c'};",
+                  "      margin-bottom: 20px;",
+                  "    }",
+                  "    .label {",
+                  "      font-size: 13px;",
+                  "      color: #888;",
+                  "      text-transform: uppercase;",
+                  "      letter-spacing: 1px;",
+                  "      margin-bottom: 6px;",
+                  "    }",
+                  "    .message {",
+                  "      font-size: 18px;",
+                  "      color: #333;",
+                  "      margin-top: 8px;",
+                  "    }",
+                  "    .icon {",
+                  "      font-size: 48px;",
+                  "      margin-bottom: 12px;",
+                  "    }",
+                  "  </style>",
+                  "</head>",
+                  "<body>",
+                  "  <div class=\"card\">",
+                  "    <div class=\"icon\">${isSuccess ? '✅' : '❌'}</div>",
+                  "    <div class=\"label\">Status Code</div>",
+                  "    <div class=\"status-badge\">${statusCode}</div>",
+                  "    <div class=\"label\">Response</div>",
+                  "    <div class=\"message\">${responseBody}</div>",
+                  "  </div>",
+                  "</body>",
+                  "</html>",
+                  "`;",
+                  "",
+                  "pm.visualizer.set(template);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"categoryid\": 1,\n    \"categoryname\":\"Travel\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/admin/Categories/:categoryId",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "Categories",
+                ":categoryId"
+              ],
+              "variable": [
+                {
+                  "key": "categoryId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Add Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productName\":\"Robot555\",\n    \"description\" : \"Its an automatic care based on voice\",\n    \"quantity\":10,\n    \"price\":500,\n    \"discount\":0,\n    \"specialPrice\":499,\n    \"product_id\":21\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/admin/categories/2/product",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "categories",
+                "2",
+                "product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productName\":\"Robot updated\",\n    \"description\" : \"Its an automatic care based on voice\",\n    \"quantity\":10,\n    \"price\":500,\n    \"discount\":0,\n    \"specialPrice\":499,\n    \"product_id\":21\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/admin/products/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product Image",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "7cb102be-308e-4fbf-9a3d-f23eaf6833df",
+                  "src": "/Users/shumaimquratualain/Downloads/pexels-ja-kubislav-374578277-14585222 (1).jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/products/1/image",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "products",
+                "1",
+                "image"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/admin/products/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "admin",
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Hello Spring Boot"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/products?pageNumber=0&pageSize=10&sortBy=productId&sortOrder=desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "productId"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products By Keyword",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Hello Spring Boot"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/products/keyword/ro",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "products",
+                "keyword",
+                "ro"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products By Category",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Hello Spring Boot"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/public/categories/1/products?pageNumber=0&pageSize=10&sortBy=productId&sortOrder=desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "public",
+                "categories",
+                "1",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "productId"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "signin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "if (jsonData && jsonData.jwtToken) {",
+                  "    const cookieValue = jsonData.jwtToken.split('; ')[0];",
+                  "    pm.collectionVariables.set('jwt_token', cookieValue);",
+                  "    console.log('jwt_token saved:', cookieValue);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "{{jwt_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"user1\",\n    \"password\":\"password1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/signin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserName",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"user1\",\n    \"password\":\"password1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/username",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "username"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUser",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"user1\",\n    \"password\":\"password1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/user",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sign out",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"user1\",\n    \"password\":\"password1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/signout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "signout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "signup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"user2\",\n    \"email\":\"user2@example.com\",\n    \"password\":\"password2\",\n    \"role\":[\"admin\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Add Product To Cart",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/carts/products/1/quantity/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "carts",
+                "products",
+                "1",
+                "quantity",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Cart",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/carts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "carts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Cart",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/carts/users/cart",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "carts",
+                "users",
+                "cart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update quantity product in cart",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/cart/products/1/quantity/delete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "cart",
+                "products",
+                "1",
+                "quantity",
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete cart product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://Sb-ecom-env.eba-kfzabwvk.us-east-1.elasticbeanstalk.com/api/carts/1/product/7",
+              "protocol": "http",
+              "host": [
+                "Sb-ecom-env",
+                "eba-kfzabwvk",
+                "us-east-1",
+                "elasticbeanstalk",
+                "com"
+              ],
+              "path": [
+                "api",
+                "carts",
+                "1",
+                "product",
+                "7"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Addresses",
+      "item": [
+        {
+          "name": "create address",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "SpringBootEcom={{jwt_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"street\": \"Market Street\",\n  \"buildingName\": \"Bay Apartment\",\n  \"city\": \"San Francisco\",\n  \"state\": \"California\",\n  \"country\": \"United States\",\n  \"pinCode\": \"941036\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/addresses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "addresses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update address",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Response is authenticated (not 401/403)\", function () {",
+                  "    pm.expect(pm.response.code).to.not.equal(401);",
+                  "    pm.expect(pm.response.code).to.not.equal(403);",
+                  "});",
+                  "pm.test(\"Status code is 2xx\", function () {",
+                  "    pm.response.to.be.success;",
+                  "});",
+                  "pm.test(\"Response body does not contain Unauthorized\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Unauthorized\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "{{jwt_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"street\":\"Market Street\",\n    \"pinCode\":\"941036\",\n    \"buildingName\":\"Bay Apartment updated\",\n    \"state\":\"California\",\n    \"country\":\"USAs\",\n    \"city\":\"bangalore\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/addresses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "addresses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get address",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Response is authenticated (not 401/403)\", function () {",
+                  "    pm.expect(pm.response.code).to.not.equal(401);",
+                  "    pm.expect(pm.response.code).to.not.equal(403);",
+                  "});",
+                  "pm.test(\"Status code is 2xx\", function () {",
+                  "    pm.response.to.be.success;",
+                  "});",
+                  "pm.test(\"Response body does not contain Unauthorized\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Unauthorized\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "{{jwt_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/addresses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "addresses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get address By Id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"street\":\"Market Street\",\n    \"pincode\":\"941036\",\n    \"building\":\"Bay Apartment\",\n    \"state\":\"California\",\n    \"country\":\"USA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/addresses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "addresses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete address",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"street\":\"Market Street\",\n    \"pincode\":\"941036\",\n    \"building\":\"Bay Apartment\",\n    \"state\":\"California\",\n    \"country\":\"USA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/addresses/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "addresses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get user  address",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"street\":\"Market Street\",\n    \"pincode\":\"941036\",\n    \"building\":\"Bay Apartment\",\n    \"state\":\"California\",\n    \"country\":\"USA\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/users/addresses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "users",
+                "addresses"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Place Order",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addressId\": 1,\n  \"pgName\": \"Stripe\",\n  \"pgPaymentId\": \"pi_1FHEhK2eZvKY1o2CcK4UJNdW\",\n  \"pgStatus\": \"succeeded\",\n  \"pgResponseMessage\": \"Payment successful\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/order/users/payments/CARD",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "order",
+                "users",
+                "payments",
+                "CARD"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "jwt_token",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_0bq3",
+      "secret": true
+    }
+  ]
+}
