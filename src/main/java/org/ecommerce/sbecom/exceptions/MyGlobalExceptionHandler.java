@@ -6,13 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.lang.System.err;
 
 @RestControllerAdvice
 
@@ -28,8 +25,8 @@ public class MyGlobalExceptionHandler {
         return new ResponseEntity<Map<String,String>>(respone, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(ResourcesNotFoundException.class)
-    public ResponseEntity<APIResponse> myResourcesNotFoundExceptionHandler(ResourcesNotFoundException e) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<APIResponse> myResourcesNotFoundExceptionHandler(ResourceNotFoundException e) {
         String message=e.getMessage();
         APIResponse apiResponse = new APIResponse(message, false);
         return new ResponseEntity<APIResponse>(apiResponse, HttpStatus.NOT_FOUND);

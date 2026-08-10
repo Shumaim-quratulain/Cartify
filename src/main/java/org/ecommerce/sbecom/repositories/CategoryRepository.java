@@ -1,4 +1,4 @@
-package org.ecommerce.sbecom.repository;
+package org.ecommerce.sbecom.repositories;
 
 
 import jakarta.validation.constraints.NotBlank;
