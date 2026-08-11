@@ -17,6 +17,39 @@
 
 ---
 
+## 💻 Local Installation & Setup
+
+### 1. Prerequisites
+Ensure you have the following installed on your local machine:
+* **Java Development Kit (JDK) 21**
+* **Maven 3.x**
+* **MySQL Server** (Running on default port `3306`)
+
+### 2. Initialization
+
+**Clone the repository:**
+```bash
+git clone [https://github.com/Shumaim-quratulain/sb-ecom.git](https://github.com/Shumaim-quratulain/sb-ecom.git)
+cd sb-ecom
+```
+
+**Configure the Database:**
+This project utilizes environment variables to protect sensitive credentials. You must provide these variables to your IDE's Run Configuration or terminal environment before starting the application:
+
+```text
+DB_URL=jdbc:mysql://localhost:3306/ecommerce_db?createDatabaseIfNotExist=true
+DB_USERNAME=your_local_mysql_user
+DB_PASSWORD=your_local_mysql_password
+JWT_SECRET=your_generated_secret_key
+```
+
+**Build and Run (via Terminal):**
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+---
+
 ## ✨ Key Features & Capabilities
 
 *   **🔒 Robust Authentication:** Stateless JSON Web Token (JWT) implementation with strictly enforced Role-Based Access Control (RBAC). Differentiates between `ROLE_USER` and `ROLE_ADMIN` privileges.
@@ -146,41 +179,9 @@ This API was containerized and deployed to **AWS Elastic Beanstalk** using a Cor
 *   Configured with `SERVER_PORT=5000` to properly map the EC2 Nginx reverse proxy to the internal Spring Boot Tomcat server.
 
 ---
-
-## 💻 Local Installation & Setup
-
-### 1. Prerequisites
-Ensure you have the following installed on your local machine:
-* **Java Development Kit (JDK) 21**
-* **Maven 3.x**
-* **MySQL Server** (Running on default port `3306`)
-
-### 2. Initialization
-
-**Clone the repository:**
-```bash
-git clone [https://github.com/Shumaim-quratulain/sb-ecom.git](https://github.com/Shumaim-quratulain/sb-ecom.git)
-cd sb-ecom
-```
-
-**Configure the Database:**
-This project utilizes environment variables to protect sensitive credentials. You must provide these variables to your IDE's Run Configuration or terminal environment before starting the application:
-
-```text
-DB_URL=jdbc:mysql://localhost:3306/ecommerce_db?createDatabaseIfNotExist=true
-DB_USERNAME=your_local_mysql_user
-DB_PASSWORD=your_local_mysql_password
-JWT_SECRET=your_generated_secret_key
-```
-
-**Build and Run (via Terminal):**
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
----
 <div align="center">
   <b>Architected and Developed by Shumaim Quratulain</b><br>
   <a href="https://github.com/Shumaim-quratulain">View GitHub Profile</a>
 </div>
+
+
