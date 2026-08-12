@@ -178,6 +178,7 @@ This API was containerized and deployed to **AWS Elastic Beanstalk** using a Cor
 *   Sensitive data (Database URLs, Passwords, and JWT Secrets) are strictly isolated from the source code. They are injected at runtime via Elastic Beanstalk **Environment Properties**.
 *   Configured with `SERVER_PORT=5000` to properly map the EC2 Nginx reverse proxy to the internal Spring Boot Tomcat server.
 
+
 ---
 <div align="center">
   <b>Architected and Developed by Shumaim Quratulain</b><br>
