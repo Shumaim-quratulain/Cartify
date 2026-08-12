@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛒 Cartify - Full-Stack E-Commerce Platform
+# 🛒 Cartify - Backend Services E-Commerce Platform
 ### Enterprise-Grade Spring Boot REST API Architecture
 
 [![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=java)](#)
